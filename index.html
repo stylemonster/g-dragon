@@ -6,516 +6,600 @@
     <title>权志龙中文站 | G-Dragon Chinese Fan Site</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
-            --primary: #000;
-            --accent: #ff1744;
-            --accent2: #00d4ff;
-            --bg: #fff;
-            --gray: #f8f8f8;
+            --primary: #0a0a0a;
+            --accent: #e63946;
+            --accent2: #ff6b6b;
+            --text: #333;
+            --text-light: #888;
+            --white: #fff;
+            --gray: #f5f5f5;
             --dark: #1a1a1a;
         }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--white);
+            color: var(--text);
             line-height: 1.6;
-            background: var(--bg);
-            color: #333;
         }
+        
+        /* Header */
         header {
             background: var(--primary);
-            color: #fff;
-            padding: 1rem 2rem;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
-        }
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+            height: 70px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
         }
+        
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 900;
-            letter-spacing: 2px;
+            color: var(--white);
+            letter-spacing: 3px;
         }
+        
         .logo span { color: var(--accent); }
-        .nav-links {
+        
+        .nav {
             display: flex;
             gap: 2rem;
-            list-style: none;
         }
-        .nav-links a {
-            color: #fff;
+        
+        .nav a {
+            color: #aaa;
             text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: color 0.3s;
+            letter-spacing: 1px;
         }
-        .nav-links a:hover { color: var(--accent); }
+        
+        .nav a:hover, .nav a.active {
+            color: var(--white);
+        }
+        
+        /* Hero */
         .hero {
-            background: linear-gradient(135deg, #000 0%, #222 50%, #000 100%);
-            color: #fff;
-            padding: 4rem 2rem;
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            color: var(--white);
             position: relative;
             overflow: hidden;
         }
+        
         .hero::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(255,23,68,0.15) 0%, transparent 50%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(230,57,70,0.15) 0%, transparent 70%);
         }
+        
         .hero h1 {
-            font-size: 3rem;
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: 15px;
             margin-bottom: 0.5rem;
             position: relative;
         }
-        .hero p {
+        
+        .hero h1 span {
+            color: var(--accent);
+        }
+        
+        .hero .name-kr {
             font-size: 1.2rem;
-            opacity: 0.8;
-            position: relative;
+            color: #666;
+            letter-spacing: 8px;
+            margin-bottom: 2rem;
         }
-        .hero .subtitle {
-            display: inline-block;
-            background: var(--accent);
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-top: 1rem;
+        
+        .hero .tagline {
+            font-size: 1rem;
+            color: #888;
+            letter-spacing: 3px;
         }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            color: #666;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        
+        /* Sections */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
-        }
-        section { margin-bottom: 3rem; }
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--accent);
-            display: inline-block;
-        }
-        .update-time {
-            font-size: 0.85rem;
-            color: #888;
-            margin-left: 1rem;
-            font-weight: normal;
+            padding: 5rem 2rem;
         }
         
-        /* Tour Schedule */
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .section-header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        /* Notice Grid */
+        .notice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .notice-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .notice-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+        }
+        
+        .notice-card .tag {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.2rem 0.6rem;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            border-radius: 3px;
+            margin-bottom: 0.8rem;
+        }
+        
+        .notice-card .tag.fam { background: var(--accent); }
+        .notice-card .tag.merch { background: #2a9d8f; }
+        .notice-card .tag.event { background: #e9c46a; color: #333; }
+        
+        .notice-card h3 {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 0.8rem;
+        }
+        
+        .notice-card .meta {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        /* Tour Section */
         .tour-section {
             background: var(--gray);
             border-radius: 12px;
-            padding: 1.5rem;
-        }
-        .tour-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: #fff;
-            border-radius: 8px;
-            margin-bottom: 0.8rem;
-            border-left: 4px solid var(--accent);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .tour-item:hover {
-            transform: translateX(4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .tour-date {
-            background: var(--primary);
-            color: #fff;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            min-width: 100px;
-            text-align: center;
-        }
-        .tour-date.sale {
-            background: var(--accent);
-        }
-        .tour-city {
-            flex: 1;
-            padding: 0 1rem;
-        }
-        .tour-city h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.2rem;
-        }
-        .tour-city p {
-            font-size: 0.85rem;
-            color: #666;
-        }
-        .tour-venue {
-            color: #888;
-            font-size: 0.85rem;
+            padding: 2rem;
         }
         
-        /* News Grid */
-        .news-grid {
+        .tour-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
         }
-        .news-card {
-            border: 1px solid #eee;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .news-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-        }
-        .news-card .content {
+        
+        .tour-item {
+            background: var(--white);
+            border-radius: 8px;
             padding: 1.2rem;
+            border-left: 3px solid var(--accent);
         }
-        .news-card h3 {
-            font-size: 1.05rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
+        
+        .tour-item .date {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
         }
-        .news-card .meta {
-            font-size: 0.8rem;
-            color: #888;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        
+        .tour-item .city {
+            font-weight: 600;
+            font-size: 1rem;
         }
-        .source-tag {
+        
+        .tour-item .venue {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .tour-item .status {
             display: inline-block;
-            background: var(--gray);
+            margin-top: 0.5rem;
             padding: 0.2rem 0.5rem;
-            border-radius: 4px;
+            font-size: 0.7rem;
+            background: #ddd;
+            border-radius: 3px;
+        }
+        
+        .tour-item .status.ended {
+            background: #eee;
+            color: #888;
+        }
+        
+        /* Contents Grid */
+        .contents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .content-card {
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--dark);
+            position: relative;
+        }
+        
+        .content-card .placeholder {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 0.8rem;
+        }
+        
+        .content-card .info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            color: var(--white);
+        }
+        
+        .content-card .info h4 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+        
+        .content-card .info .city {
             font-size: 0.75rem;
+            color: #aaa;
         }
         
         /* AI Chat */
+        .chat-section {
+            background: var(--primary);
+            border-radius: 16px;
+            padding: 2rem;
+            color: var(--white);
+        }
+        
+        .chat-section h2 {
+            margin-bottom: 1.5rem;
+        }
+        
         .chat-container {
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
         }
+        
         .chat-box {
-            border: 1px solid #e0e0e0;
-            border-radius: 16px;
-            height: 500px;
+            background: var(--dark);
+            border-radius: 12px;
+            height: 400px;
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
+        
         .chat-messages {
             flex: 1;
             padding: 1rem;
             overflow-y: auto;
-            background: var(--gray);
         }
+        
         .message {
             margin-bottom: 1rem;
             padding: 0.8rem 1rem;
-            border-radius: 16px;
+            border-radius: 12px;
             max-width: 85%;
-            line-height: 1.5;
+            font-size: 0.95rem;
         }
+        
         .message.user {
-            background: var(--primary);
-            color: #fff;
+            background: var(--accent);
+            color: var(--white);
             margin-left: auto;
             border-bottom-right-radius: 4px;
         }
+        
         .message.bot {
-            background: #fff;
-            border: 1px solid #e0e0e0;
+            background: #333;
+            color: #ddd;
             border-bottom-left-radius: 4px;
         }
-        .message.bot .avatar {
+        
+        .message.bot::before {
+            content: 'GD';
             display: inline-block;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             background: var(--accent);
             border-radius: 50%;
             text-align: center;
-            line-height: 24px;
-            color: #fff;
-            font-size: 12px;
+            line-height: 20px;
+            font-size: 10px;
             margin-right: 8px;
         }
+        
         .chat-input {
             display: flex;
             padding: 1rem;
-            background: #fff;
-            border-top: 1px solid #e0e0e0;
+            background: #222;
         }
+        
         .chat-input input {
             flex: 1;
             padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
+            border: none;
             border-radius: 24px;
+            background: #333;
+            color: var(--white);
             font-size: 1rem;
             outline: none;
-            transition: border-color 0.3s;
         }
-        .chat-input input:focus {
-            border-color: var(--accent);
+        
+        .chat-input input::placeholder {
+            color: #666;
         }
+        
         .chat-input button {
             margin-left: 0.5rem;
             padding: 0.8rem 1.5rem;
             background: var(--accent);
-            color: #fff;
+            color: var(--white);
             border: none;
             border-radius: 24px;
             cursor: pointer;
             font-weight: bold;
-            transition: transform 0.2s;
-        }
-        .chat-input button:hover {
-            transform: scale(1.05);
         }
         
         /* Footer */
         footer {
-            background: var(--dark);
-            color: #888;
+            background: var(--primary);
+            color: #666;
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            padding: 3rem 2rem;
         }
-        footer a { color: var(--accent); }
         
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2rem; }
-            .tour-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-            .tour-date { width: auto; }
+            .hero h1 { font-size: 3rem; letter-spacing: 8px; }
+            .nav { display: none; }
+            .notice-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">G<span>-</span>DRAGON <span style="font-weight:300">权志龙</span></div>
-            <ul class="nav-links">
-                <li><a href="#tour">演唱会</a></li>
-                <li><a href="#news">新闻</a></li>
-                <li><a href="#ai">AI问答</a></li>
-            </ul>
+        <div class="logo">G<span>-</span>DRAGON</div>
+        <nav class="nav">
+            <a href="#notice" class="active">最新公告</a>
+            <a href="#tour">演唱会</a>
+            <a href="#contents">精选内容</a>
+            <a href="#ai">AI问答</a>
         </nav>
     </header>
     
     <div class="hero">
-        <h1>G-DRAGON 权志龙</h1>
-        <p>G-Dragon | 권지용 | 全球流行icon</p>
-        <span class="subtitle">2025 WORLD TOUR 火热售票中</span>
+        <h1>G-DRAGON</h1>
+        <p class="name-kr">권 지 용</p>
+        <p class="tagline">权志龙中文站 · 官方粉丝资讯</p>
+        <span class="scroll-down">SCROLL</span>
     </div>
     
     <div class="container">
+        <!-- 公告区 -->
+        <section id="notice">
+            <div class="section-header">
+                <h2>📢 最新公告</h2>
+                <a href="#">查看全部 →</a>
+            </div>
+            <div class="notice-grid">
+                <article class="notice-card">
+                    <span class="tag fam">FAN MEETING</span>
+                    <h3>2026 G-DRAGON 'FAM' MEETING 泰国粉丝见面会公告</h3>
+                    <p class="meta">2026年 · 来源: 官方粉丝社区</p>
+                </article>
+                <article class="notice-card">
+                    <span class="tag merch">MERCH</span>
+                    <h3>2026 G-DRAGON 'FAM' MEETING 官方周边 Online Pre-sales</h3>
+                    <p class="meta">2026年 · 来源: withmuu.com</p>
+                </article>
+                <article class="notice-card">
+                    <span class="tag">NOTICE</span>
+                    <h3>Update on Legal Actions to Protect G-DRAGON's Rights (February 24)</h3>
+                    <p class="meta">2026年2月 · 来源: 官方</p>
+                </article>
+                <article class="notice-card">
+                    <span class="tag event">EVENT</span>
+                    <h3>G-DRAGON IN CINEMA [Übermensch] 'FAM' 首映礼中奖公布</h3>
+                    <p class="meta">2026年 · 来源: 官方</p>
+                </article>
+                <article class="notice-card">
+                    <span class="tag fam">FAN MEETING</span>
+                    <h3>2026 G-DRAGON 'FAM' MEETING IN JAPAN 邀请视频</h3>
+                    <p class="meta">2026年 · 来源: 横滨场</p>
+                </article>
+                <article class="notice-card">
+                    <span class="tag merch">MERCH</span>
+                    <h3>G-DRAGON 官方应援棒 LIGHT STICK [DAY-G] 联动指南</h3>
+                    <p class="meta">2026年 · 来源: 官方</p>
+                </article>
+            </div>
+        </section>
+        
         <!-- 演唱会区 -->
         <section id="tour">
-            <h2>🎤 2025 世界巡回演唱会 <span class="update-time">已结束</span></h2>
-            <div style="background: #fff3cd; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #ffc107;">
-                <p>📢 2025世界巡回演唱会已圆满结束！感谢所有粉丝的支持。2026年巡演信息择日公布，敬请期待！</p>
+            <div class="section-header">
+                <h2>🎤 2025 世界巡回演唱会</h2>
+                <span style="color: #888; font-size: 0.9rem;">已结束</span>
             </div>
             <div class="tour-section">
-                <div class="tour-item">
-                    <span class="tour-date sale">12-14 DEC</span>
-                    <div class="tour-city">
-                        <h3>🇰🇷 首尔 Seoul</h3>
-                        <p>Gocheok Sky Dome</p>
+                <div class="tour-grid">
+                    <div class="tour-item">
+                        <div class="date">12-14 DEC</div>
+                        <div class="city">🇰🇷 首尔 Seoul</div>
+                        <div class="venue">Gocheok Sky Dome</div>
+                        <span class="status ended">已结束</span>
                     </div>
-                    <span class="tour-venue">✅ 已结束</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">10-11 MAY</span>
-                    <div class="tour-city">
-                        <h3>🇯🇵 东京 Tokyo</h3>
-                        <p>Tokyo Dome</p>
+                    <div class="tour-item">
+                        <div class="date">10-11 MAY</div>
+                        <div class="city">🇯🇵 东京 Tokyo</div>
+                        <div class="venue">Tokyo Dome</div>
+                        <span class="status ended">已结束</span>
                     </div>
-                    <span class="tour-venue">已结束</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">17 MAY</span>
-                    <div class="tour-city">
-                        <h3>🇵🇭 Bulacan</h3>
-                        <p>Philippine Arena</p>
+                    <div class="tour-item">
+                        <div class="date">25-26 MAY</div>
+                        <div class="city">🇯🇵 大阪 Osaka</div>
+                        <div class="venue">Kyocera Dome</div>
+                        <span class="status ended">已结束</span>
                     </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">25-26 MAY</span>
-                    <div class="tour-city">
-                        <h3>🇯🇵 大阪 Osaka</h3>
-                        <p>Kyocera Dome</p>
+                    <div class="tour-item">
+                        <div class="date">6-8 JUN</div>
+                        <div class="city">🇲🇴 澳门 Macau</div>
+                        <div class="venue">Galaxy Arena</div>
+                        <span class="status ended">已结束</span>
                     </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">6-8 JUN</span>
-                    <div class="tour-city">
-                        <h3>🇲🇴 澳门 Macau</h3>
-                        <p>Galaxy Arena</p>
+                    <div class="tour-item">
+                        <div class="date">11-13 JUL</div>
+                        <div class="city">🇹🇼 台北 Taipei</div>
+                        <div class="venue">Taipei Arena</div>
+                        <span class="status ended">已结束</span>
                     </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">2-3 JUL</span>
-                    <div class="tour-city">
-                        <h3>🇦🇺 悉尼 Sydney</h3>
-                        <p>Qudos Bank Arena</p>
+                    <div class="tour-item">
+                        <div class="date">8-10 AUG</div>
+                        <div class="city">🇭🇰 香港 Hong Kong</div>
+                        <div class="venue">AsiaWorld-Arena</div>
+                        <span class="status ended">已结束</span>
                     </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">6-7 JUL</span>
-                    <div class="tour-city">
-                        <h3>🇦🇺 墨尔本 Melbourne</h3>
-                        <p>Rod Laver Arena</p>
+                    <div class="tour-item">
+                        <div class="date">5-6 SEP</div>
+                        <div class="city">🇺🇸 洛杉矶 LA</div>
+                        <div class="venue">Crypto.com Arena</div>
+                        <span class="status ended">已结束</span>
                     </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">11-13 JUL</span>
-                    <div class="tour-city">
-                        <h3>🇹🇼 台北 Taipei</h3>
-                        <p>Taipei Arena</p>
+                    <div class="tour-item">
+                        <div class="date">20 SEP</div>
+                        <div class="city">🇫🇷 巴黎 Paris</div>
+                        <div class="venue">Paris La Défense Arena</div>
+                        <span class="status ended">已结束</span>
                     </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">19-20 JUL</span>
-                    <div class="tour-city">
-                        <h3>🇲🇾 吉隆坡 Kuala Lumpur</h3>
-                        <p>Axiata Arena Bukit Jalil</p>
-                    </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">25-26 JUL</span>
-                    <div class="tour-city">
-                        <h3>🇮🇩 雅加达 Jakarta</h3>
-                        <p>Indonesia Arena</p>
-                    </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">8-10 AUG</span>
-                    <div class="tour-city">
-                        <h3>🇭🇰 香港 Hong Kong</h3>
-                        <p>AsiaWorld-Arena</p>
-                    </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">22-23 AUG</span>
-                    <div class="tour-city">
-                        <h3>🇺🇸 纽瓦克 Newark</h3>
-                        <p>Prudential Center</p>
-                    </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">31 AUG</span>
-                    <div class="tour-city">
-                        <h3>🇺🇸 拉斯维加斯 Las Vegas</h3>
-                        <p>T-Mobile Arena</p>
-                    </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">5-6 SEP</span>
-                    <div class="tour-city">
-                        <h3>🇺🇸 洛杉矶 Los Angeles</h3>
-                        <p>Crypto.com Arena</p>
-                    </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">20 SEP</span>
-                    <div class="tour-city">
-                        <h3>🇫🇷 巴黎 Paris</h3>
-                        <p>Paris La Défense Arena</p>
-                    </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">20-21 OCT</span>
-                    <div class="tour-city">
-                        <h3>🇯🇵 大阪 Osaka</h3>
-                        <p>Kyocera Dome Osaka</p>
-                    </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">1-2 NOV</span>
-                    <div class="tour-city">
-                        <h3>🇹🇼 台北 Taipei</h3>
-                        <p>Taipei Dome</p>
-                    </div>
-                    <span class="tour-venue">-</span>
-                </div>
-                <div class="tour-item">
-                    <span class="tour-date">8-9 NOV</span>
-                    <div class="tour-city">
-                        <h3>🇻🇳 河内 Hanoi</h3>
-                        <p>8Wonder Ocean City</p>
-                    </div>
-                    <span class="tour-venue">-</span>
                 </div>
             </div>
         </section>
         
-        <!-- 新闻区 -->
-        <section id="news">
-            <h2>📰 最新动态</h2>
-            <div class="news-grid">
-                <article class="news-card">
-                    <div class="content">
-                        <h3>2025 World Tour 全球18城开唱！</h3>
-                        <div class="meta">
-                            <span class="source-tag">g-dragontour.com</span>
-                            <span>2025年</span>
-                        </div>
+        <!-- 精选内容区 -->
+        <section id="contents">
+            <div class="section-header">
+                <h2>📸 精选内容</h2>
+                <a href="#">查看更多 →</a>
+            </div>
+            <div class="contents-grid">
+                <div class="content-card">
+                    <div class="placeholder">BEHIND PHOTO</div>
+                    <div class="info">
+                        <h4>2025 WORLD TOUR SEOUL</h4>
+                        <p class="city">首尔安可场幕后</p>
                     </div>
-                </article>
-                <article class="news-card">
-                    <div class="content">
-                        <h3>首尔场12月火热售票中</h3>
-                        <div class="meta">
-                            <span class="source-tag">官网</span>
-                            <span>2025年</span>
-                        </div>
+                </div>
+                <div class="content-card">
+                    <div class="placeholder">BEHIND PHOTO</div>
+                    <div class="info">
+                        <h4>2025 WORLD TOUR PARIS</h4>
+                        <p class="city">巴黎站幕后</p>
                     </div>
-                </article>
-                <article class="news-card">
-                    <div class="content">
-                        <h3>亚洲巡演包含台北、香港、澳门</h3>
-                        <div class="meta">
-                            <span class="source-tag">g-dragontour.com</span>
-                            <span>2025年</span>
-                        </div>
+                </div>
+                <div class="content-card">
+                    <div class="placeholder">BEHIND PHOTO</div>
+                    <div class="info">
+                        <h4>2025 WORLD TOUR TAIPEI</h4>
+                        <p class="city">台北站幕后</p>
                     </div>
-                </article>
+                </div>
+                <div class="content-card">
+                    <div class="placeholder">FAM SNAP</div>
+                    <div class="info">
+                        <h4>2025 WORLD TOUR KOREA</h4>
+                        <p class="city">韩国场粉丝合影</p>
+                    </div>
+                </div>
             </div>
         </section>
         
         <!-- AI问答区 -->
         <section id="ai">
-            <h2>🤖 AI 问答助手</h2>
-            <div class="chat-container">
-                <div class="chat-box">
-                    <div class="chat-messages" id="chatMessages">
-                        <div class="message bot">
-                            <span class="avatar">GD</span>
-                            你好！我是权志龙AI助手，可以回答关于GD的问题～
+            <div class="chat-section">
+                <h2>🤖 AI 问答助手</h2>
+                <div class="chat-container">
+                    <div class="chat-box">
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message bot">
+                                你好！我是权志龙AI助手，有什么关于GD的问题都可以问我～
+                            </div>
                         </div>
-                    </div>
-                    <div class="chat-input">
-                        <input type="text" id="userInput" placeholder="问我关于权志龙的问题...">
-                        <button onclick="sendMessage()">发送</button>
+                        <div class="chat-input">
+                            <input type="text" id="userInput" placeholder="问我关于权志龙的问题...">
+                            <button onclick="sendMessage()">发送</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -524,22 +608,22 @@
     
     <footer>
         <p>权志龙中文站 | G-Dragon Chinese Fan Site</p>
-        <p>© 2024-2025 GD中文站. All Rights Reserved.</p>
-        <p>数据来源: g-dragontour.com</p>
+        <p>© 2024-2026 GD中文站 All Rights Reserved.</p>
+        <p>数据来源: <a href="https://gdragon.ai" target="_blank">gdragon.ai</a> 官方粉丝社区</p>
     </footer>
     
     <script>
         const knowledge = {
-            '演唱会': 'G-DRAGON 2025 WORLD TOUR 已公布！共18个城市，包括首尔、东京、台北、香港、澳门、悉尼、墨尔本、雅加达、吉隆坡、巴黎、洛杉矶、拉斯维加斯、纽瓦克、河内等。首尔场12月12-14日正在售票中！',
+            '演唱会': 'G-DRAGON 2025 WORLD TOUR [Übermensch] 已圆满结束！共经过首尔、东京、澳门、悉尼、墨尔本、台北、吉隆坡、雅加达、香港、纽瓦克、拉斯维加斯、洛杉矶、巴黎、河内等城市。感谢所有粉丝的支持！',
             '退伍': '权志龙于2019年10月26日退伍。',
-            '新歌': '退伍后权志龙暂无正式发行的新专辑，但偶尔会在社交媒体分享音乐相关内容。',
+            '新歌': '退伍后权志龙暂无正式发行的新专辑。',
             '品牌': '权志龙创立了个人品牌PEACEMUSONE，与Nike、Chanel、Adidas等品牌有知名联名。',
-            '权志龙': '权志龙（G-Dragon）是韩国歌手、BIGBANG队长、词曲制作人、时尚icon。被誉为"韩国潮流引领者"，是首位在巴黎时装周举办个人展的韩国艺人。',
+            '权志龙': '权志龙（G-Dragon）是韩国歌手、BIGBANG队长、词曲制作人、时尚icon。被誉为"韩国潮流引领者"。',
             '个人展': '权志龙曾在巴黎举办"Parrot"个人展，展示其艺术创作。',
-            'ni': '权志龙是BIGBANG队长，G-Dragon是他的艺名。',
-            'bigbang': 'BIGBAGON是韩国顶级男子组合，成员包括G-Dragon、T.O.P、东永裴、姜大声、胜利。',
-            'top': 'T.O.P权志龙的好友，曾是BIGBANG成员。',
-            'ygtb': '权志龙曾出演中国综艺《 中国新说唱 2024》担任导师。'
+            'bigbang': 'BIGBANG是韩国顶级男子组合，成员包括G-Dragon、T.O.P、东永裴、姜大声、胜利。',
+            '粉丝见面会': '2026年G-DRAGON FAM MEETING已在泰国、日本等地举办！',
+            '周边': '官方周边可在withmuu.com购买，包括FAM KIT、联名商品等。',
+            'famanmeeting': '2026 G-DRAGON "FAM" MEETING 已举办，包含泰国曼谷、日本横滨等场次！'
         };
         
         function sendMessage() {
@@ -553,7 +637,7 @@
             input.value = '';
             
             setTimeout(() => {
-                let answer = '抱歉，我暂时没有这个问题的信息。你可以尝试问关于演唱会、退伍、新歌、品牌、联名等方面的问题。';
+                let answer = '抱歉，我暂时没有这个问题的信息。你可以尝试问关于演唱会、退伍、新歌、品牌、粉丝见面会等方面的问题。';
                 
                 for (const key in knowledge) {
                     if (question.includes(key)) {
@@ -562,13 +646,22 @@
                     }
                 }
                 
-                messages.innerHTML += `<div class="message bot"><span class="avatar">GD</span>${answer}</div>`;
+                messages.innerHTML += `<div class="message bot">${answer}</div>`;
                 messages.scrollTop = messages.scrollHeight;
             }, 600);
         }
         
         document.getElementById('userInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') sendMessage();
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
         });
     </script>
 </body>
