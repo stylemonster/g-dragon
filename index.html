@@ -568,6 +568,46 @@
                     </div>
                 </article>
             </div>
+            <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #888; text-align: right;">
+                🔄 最后更新: 2026-03-16 | 数据来源: <a href="https://gdragon.ai" target="_blank" style="color: var(--accent);">gdragon.ai</a>
+            </p>
+        </section>
+        
+        <!-- 社交媒体动态 -->
+        <section id="social">
+            <div class="section-header">
+                <h2>📱 社交媒体动态</h2>
+                <a href="https://www.instagram.com/xxx" target="_blank" style="color: #E1306C;">Instagram →</a>
+            </div>
+            <div class="notice-grid">
+                <article class="notice-card">
+                    <span class="tag" style="background: #E1306C;">📸 Instagram</span>
+                    <h3>G-Dragon 更新Instagram Story</h3>
+                    <p class="meta">📅 2026-03-15</p>
+                    <div class="detail">
+                        <p>权志龙更新了个IG STORY，内容为日常生活照...</p>
+                        <a href="https://instagram.com/gdragon" target="_blank" style="color: var(--accent);">查看原帖 →</a>
+                    </div>
+                </article>
+                <article class="notice-card">
+                    <span class="tag" style="background: #FF0000;">▶ YouTube</span>
+                    <h3>官方YouTube新视频发布</h3>
+                    <p class="meta">📅 2026-03-10</p>
+                    <div class="detail">
+                        <p>G-DRAGON Official频道发布了最新视频...</p>
+                        <a href="https://youtube.com/@G-Dragon" target="_blank" style="color: var(--accent);">查看原片 →</a>
+                    </div>
+                </article>
+                <article class="notice-card">
+                    <span class="tag" style="background: #1DA1F2;">𝕏 Twitter</span>
+                    <h3>G-Dragon 更新Twitter/X</h3>
+                    <p class="meta">📅 2026-03-08</p>
+                    <div class="detail">
+                        <p>权志龙更新了Twitter/X帖子...</p>
+                        <a href="https://x.com/IBGDRGN" target="_blank" style="color: var(--accent);">查看原帖 →</a>
+                    </div>
+                </article>
+            </div>
         </section>
         
         <!-- 演唱会区 -->
@@ -628,6 +668,26 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- 2026 未来活动 -->
+            <div class="tour-section" style="margin-top: 1.5rem; border: 2px solid var(--accent);">
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--accent);">📅 2026 近期活动</h3>
+                <div class="tour-grid">
+                    <div class="tour-item" style="border-left-color: var(--accent);">
+                        <div class="date">待定</div>
+                        <div class="city">🌏 亚洲 Asia</div>
+                        <div class="venue">新专辑/巡演筹备中</div>
+                        <span class="status" style="background: var(--accent); color: white;">筹备中</span>
+                    </div>
+                    <div class="tour-item" style="border-left-color: var(--accent);">
+                        <div class="date">2026</div>
+                        <div class="city">🌍 全球 Global</div>
+                        <div class="venue">纪录片《Übermensch》流媒体上线</div>
+                        <span class="status" style="background: #2a9d8f; color: white;">即将上线</span>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.85rem; color: #666;">📌 关注官方社交媒体获取最新活动信息</p>
+            </div>
         </section>
         
         <!-- 精选内容区 -->
@@ -672,6 +732,13 @@
         <section id="ai">
             <div class="chat-section">
                 <h2>🤖 AI 问答助手</h2>
+                <p style="color: #888; margin-bottom: 1rem; font-size: 0.9rem;">试试这样问：</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                    <span onclick="quickAsk('权志龙下一次活动是什么？')" style="background: #333; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; cursor: pointer; color: #aaa; border: 1px solid #444;">💬 权志龙下一次活动是什么？</span>
+                    <span onclick="quickAsk('权志龙2026粉丝见面会有哪些城市？')" style="background: #333; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; cursor: pointer; color: #aaa; border: 1px solid #444;">💬 权志龙2026粉丝见面会有哪些城市？</span>
+                    <span onclick="quickAsk('权志龙新专辑什么时候发布？')" style="background: #333; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; cursor: pointer; color: #aaa; border: 1px solid #444;">💬 权志龙新专辑什么时候发布？</span>
+                    <span onclick="quickAsk('权志龙退伍时间')" style="background: #333; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.8rem; cursor: pointer; color: #aaa; border: 1px solid #444;">💬 权志龙退伍时间</span>
+                </div>
                 <div class="chat-container">
                     <div class="chat-box">
                         <div class="chat-messages" id="chatMessages">
@@ -680,7 +747,7 @@
                             </div>
                         </div>
                         <div class="chat-input">
-                            <input type="text" id="userInput" placeholder="问我关于权志龙的问题...">
+                            <input type="text" id="userInput" placeholder="问我关于权志龙的问题... (如: 下一次活动、新专辑、演唱会行程)">
                             <button onclick="sendMessage()">发送</button>
                         </div>
                     </div>
@@ -700,6 +767,12 @@
         function toggleDetail(card) {
             const detail = card.querySelector('.detail');
             detail.classList.toggle('show');
+        }
+        
+        // 快速提问
+        function quickAsk(question) {
+            document.getElementById('userInput').value = question;
+            sendMessage();
         }
         
         const knowledge = {
